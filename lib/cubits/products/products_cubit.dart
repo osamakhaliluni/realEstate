@@ -14,6 +14,14 @@ class ProductsCubit extends Cubit<ProductsState> {
 
   static ProductsCubit get(context) => BlocProvider.of(context);
 
+  List<String> _getCategories(List<ProductModel> products) {
+    List<String> categories = [];
+    for (var products in products) {
+      categories.add(products.category);
+    }
+    return categories;
+  }
+
   Future<void> getProducts() async {
     emit(ProductsLoading());
     String baseUrl = dotenv.get('BASE_URL');
@@ -26,7 +34,7 @@ class ProductsCubit extends Cubit<ProductsState> {
         List<ProductModel> products = (response.data as List)
             .map((json) => ProductModel.fromJson(json))
             .toList();
-        emit(ProductsLoaded(products));
+        emit(ProductsLoaded(products, _getCategories(products)));
       } else {
         emit(ProductsError("Failed to load products"));
       }

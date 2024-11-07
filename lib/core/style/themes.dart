@@ -10,7 +10,7 @@ ThemeData lightTheme = ThemeData(
     surface: lightColor,
     onSurface: blackColor,
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodyMedium: TextStyle(fontSize: 20),
     bodyLarge: TextStyle(fontSize: 30),
   ),
@@ -19,7 +19,7 @@ ThemeData lightTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: primaryColor,
       foregroundColor: lightColor,
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10), // Rounded corners
       ),
