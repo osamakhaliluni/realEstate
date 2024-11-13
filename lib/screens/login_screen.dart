@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
         ),
         body: Stack(
           children: [
+            // Logo section
             Positioned(
               top: 0,
               right: 0,
@@ -25,10 +26,18 @@ class LoginScreen extends StatelessWidget {
               child: SizedBox(
                 height: SizeConfig.screenHeight / 4,
                 child: const Center(
-                  child: Text("Real Estate"),
+                  child: Text(
+                    "Real Estate",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ),
+
             Positioned(
               bottom: 0,
               right: 0,
@@ -48,7 +57,14 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Text("Login"),
+                    const Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    // Input section
                     Container(
                       padding: const EdgeInsets.all(5),
                       decoration: const BoxDecoration(
@@ -125,21 +141,69 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    // Buttons section
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text("Forgot Password?"),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Don`t have account? Register.",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Forgot password?",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           width: SizeConfig.screenWidth / 3,
+                          height: 60,
                           child: ElevatedButton(
                             onPressed: () {},
                             child: const Text("Login"),
                           ),
                         )
                       ],
+                    ),
+                    // IconButtons section
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.facebook,
+                              size: 70,
+                              color: primaryColor,
+                            ),
+                            onPressed: () {},
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Image.asset(
+                              "assets/images/google.webp",
+                              width: 70,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.apple,
+                              size: 70,
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
