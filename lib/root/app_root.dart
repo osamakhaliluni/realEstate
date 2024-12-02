@@ -7,6 +7,7 @@ import 'package:frontend/cubits/theme/theme_cubit.dart';
 import 'package:frontend/cubits/user/user_cubit.dart';
 import 'package:frontend/screens/home_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
+import 'package:frontend/screens/register_screen.dart';
 import 'package:frontend/screens/splash_screen.dart';
 import 'package:frontend/utils/size_config.dart';
 
@@ -31,6 +32,7 @@ class AppRoot extends StatelessWidget {
         builder: (context, state) {
           SizeConfig.init(context);
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             themeMode: ThemeCubit.get(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
@@ -44,6 +46,7 @@ class AppRoot extends StatelessWidget {
               "splash": (context) => SplashScreen(),
               "home": (context) => HomeScreen(),
               "login": (context) => LoginScreen(),
+              "register": (context) => RegisterScreen(),
             },
           );
         },

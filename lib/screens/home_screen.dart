@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/style/colors.dart';
 import 'package:frontend/cubits/products/products_cubit.dart';
 import 'package:frontend/cubits/user/user_cubit.dart';
+import 'package:frontend/models/user_model.dart';
 import 'package:frontend/utils/size_config.dart';
 import 'package:frontend/widgets/product_card.dart';
 
@@ -70,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         );
                       } else if (state is UserLoggedIn) {
+                        UserModel user = UserCubit.get(context).user!;
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -77,16 +79,27 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("Hello !"),
-                                Text(state.user.fName),
+                                Text(user.fName),
                               ],
                             ),
+                            SizedBox(
+                              width: SizeConfig.screenWidth / 4,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  UserCubit.get(context).logout();
+                                  Navigator.pushReplacementNamed(
+                                      context, "home");
+                                  _refreshProducts();
+                                },
+                                child: Text("Logout"),
+                              ),
+                            ),
                             CircleAvatar(
-                              backgroundImage: state.user.image != null &&
-                                      state.user.image!.isNotEmpty
-                                  ? NetworkImage(state.user.image!)
-                                  : null,
-                              child: state.user.image == null ||
-                                      state.user.image!.isEmpty
+                              backgroundImage:
+                                  user.image != null && user.image!.isNotEmpty
+                                      ? NetworkImage(user.image!)
+                                      : null,
+                              child: user.image == null || user.image!.isEmpty
                                   ? Icon(Icons.person)
                                   : null,
                             ),
