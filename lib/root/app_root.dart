@@ -5,8 +5,9 @@ import 'package:frontend/core/style/themes.dart';
 import 'package:frontend/cubits/products/products_cubit.dart';
 import 'package:frontend/cubits/theme/theme_cubit.dart';
 import 'package:frontend/cubits/user/user_cubit.dart';
-import 'package:frontend/screens/home_screen.dart';
+import 'package:frontend/screens/home/home_screen.dart';
 import 'package:frontend/screens/login_screen.dart';
+import 'package:frontend/screens/main_screen.dart';
 import 'package:frontend/screens/register_screen.dart';
 import 'package:frontend/screens/splash_screen.dart';
 import 'package:frontend/utils/size_config.dart';
@@ -44,6 +45,7 @@ class AppRoot extends StatelessWidget {
             initialRoute: "splash",
             routes: {
               "splash": (context) => SplashScreen(),
+              "main": (context) => MainScreen(),
               "home": (context) => HomeScreen(),
               "login": (context) => LoginScreen(),
               "register": (context) => RegisterScreen(),
